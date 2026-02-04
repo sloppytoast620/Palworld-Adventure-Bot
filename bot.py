@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 bot.add_command(create_character_command)
 bot.add_command(character_info_command)
 bot.add_command(explore_command)
-TOKEN = os.getenv(DISCORD_TOKEN)
+TOKEN = os.environ.get("DISCORD_TOKEN")
 
 # Run the bot
 bot.run(TOKEN)
