@@ -37,12 +37,13 @@ async def create_character_command(ctx, name: str, starter: str, pclass: str = "
 async def character_info_command(ctx):
     char = characters.get(ctx.author.id)
     if not char:
-        await ctx.send("You don't have a character yet! Use !createchar to make one.")
+        await ctx.send("⚠️ You don't have a character yet! Use `!createchar` to begin your adventure.")
         return
 
     await ctx.send(
-        f"**Your Character:**\n"
-        f"Name: {char['name']}\n"
-        f"Starter Pal: {char['starter']}\n"
-        f"Class: {char['class']}"
+        f"📜 **Your Palworld Trainer Card** 📜\n\n"
+        f"👤 **Name:** {char['name']}\n"
+        f"🐾 **Starter Pal:** {char['starter']}\n"
+        f"🎒 **Class:** {char['class']}\n\n"
+        f"🌍 Use `!explore` to find wild Pals!"
     )
