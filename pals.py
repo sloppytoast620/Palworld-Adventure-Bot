@@ -115,3 +115,12 @@ PAL_STATS = {
 "Frostallion": {"hp":140,"atk":140,"def":120},
 "Jetragon": {"hp":110,"atk":140,"def":110}
 }
+ZONES = {
+    "meadow": ["Lamball", "Cattiva", "Chikipi", "Vixy", "Cremis"],
+    "forest": ["Lifmunk", "Tanzee", "Daedream", "Rushoar", "Nox"],
+    "lake": ["Fuack", "Pengullet", "Celaray", "Surfent", "Kelpsea"],
+    "mountain": ["Eikthyrdeer", "Direhowl", "Digtoise", "Fenglope"],
+    "volcano": ["Foxparks", "Arsox", "Blazamut", "Ragnahawk"],
+    "sky": ["Nitewing", "Vanwyrm", "Helzephyr", "Jetragon"],
+    "legendary": ["Paladius", "Necromus", "Frostallion"]
+}
