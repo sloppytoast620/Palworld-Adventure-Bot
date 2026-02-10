@@ -125,3 +125,6 @@ ZONES = {
     "legendary": ["Paladius", "Necromus", "Frostallion"]
 }
 
+@commands.command(name="explore")
+async def explore_command(ctx, zone: str):
+    ...
