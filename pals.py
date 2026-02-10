@@ -128,3 +128,4 @@ ZONES = {
 @commands.command(name="explore")
 async def explore_command(ctx, zone: str):
     ...
+__all__ = ["explore_command"]
