@@ -127,5 +127,25 @@ ZONES = {
 
 @commands.command(name="explore")
 async def explore_command(ctx, zone: str):
-    ...
+    char = characters.get(ctx.author.id)
+    if not char:
+        await ctx.send("❌ You need a character first! Use `!createchar` to begin your adventure.")
+        return
+
+    zone = zone.lower()
+    if zone not in ZONES:
+        await ctx.send(f"🌍 **Unknown zone!** Available zones: {', '.join(ZONES.keys())}")
+        return
+
+    pal = random.choice(ZONES[zone])
+    stats = PAL_STATS[pal]
+
+    await ctx.send(
+        f"🌿 **{ctx.author.name} ventures into the {zone.title()}...**\n\n"
+        f"👀 The air feels tense...\n"
+        f"🐾 A wild **{pal}** suddenly appears!\n\n"
+        f"❤️ **HP:** {stats['hp']}   ⚔️ **ATK:** {stats['atk']}   🛡️ **DEF:** {stats['def']}\n\n"
+        f"🎯 Type `!capture` to try catching it!\n"
+        f"🏃 Type `!run` to escape safely."
+    )
 __all__ = ["explore_command"]
