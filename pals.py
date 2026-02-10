@@ -124,3 +124,25 @@ ZONES = {
     "sky": ["Nitewing", "Vanwyrm", "Helzephyr", "Jetragon"],
     "legendary": ["Paladius", "Necromus", "Frostallion"]
 }
+
+@commands.command(name="explore")
+async def explore_command(ctx, zone: str):
+    char = characters.get(ctx.author.id)
+    if not char:
+        await ctx.send("❌ Create a character first with `!createchar`")
+        return
+
+    zone = zone.lower()
+    if zone not in ZONES:
+        await ctx.send(f"🌍 Available zones: {', '.join(ZONES.keys())}")
+        return
+
+    pal = random.choice(ZONES[zone])
+    stats = PAL_STATS[pal]
+
+    await ctx.send(
+        f"🌍 **{ctx.author.name} explores the {zone.title()}...**\n\n"
+        f"🐾 A wild **{pal}** appears!\n"
+        f"❤️ HP: {stats['hp']}  ⚔️ ATK: {stats['atk']}  🛡️ DEF: {stats['def']}\n\n"
+        f"Type `!capture` to try catching it!"
+    )
