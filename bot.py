@@ -17,10 +17,7 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
     await bot.tree.sync()
 
-# Register commands
-@bot.event
-async def setup_hook():
-    bot.remove_command("explore")
+# Register command
 bot.add_command(create_character_command)
 bot.add_command(character_info_command)
 bot.add_command(explore_command)
