@@ -126,6 +126,45 @@ ZONES = {
 }
 
 @commands.command(name="explore")
-async def explore_command(ctx, zone: str):
-    ...
+async def explore_command(ctx, zone: str = None):
+    char = characters.get(ctx.author.id)
+    if not char:
+        await ctx.send("❌ You need a character first! Use `!createchar` to begin your adventure.")
+        return
+
+    # If no zone was chosen, show help menu
+    if zone is None:
+        await ctx.send(
+            "🧭 **Palworld Exploration Guide** 🧭\n\n"
+            "To explore, choose a zone:\n"
+            "🌾 `!explore meadow`\n"
+            "🌲 `!explore forest`\n"
+            "🌊 `!explore lake`\n"
+            "⛰️ `!explore mountain`\n"
+            "🌋 `!explore volcano`\n"
+            "☁️ `!explore sky`\n"
+            "✨ `!explore legendary`\n\n"
+            "Where would you like to go?"
+        )
+        return
+
+    zone = zone.lower()
+    if zone not in ZONES:
+        await ctx.send(
+            f"❌ **Unknown zone!**\n"
+            f"Available zones: {', '.join(ZONES.keys())}"
+        )
+        return
+
+    pal = random.choice(ZONES[zone])
+    stats = PAL_STATS[pal]
+
+    await ctx.send(
+        f"🌍 **{ctx.author.name} travels to the {zone.title()}...**\n\n"
+        f"🍃 The wind shifts… something is nearby.\n"
+        f"🐾 A wild **{pal}** appears!\n\n"
+        f"❤️ **HP:** {stats['hp']}   ⚔️ **ATK:** {stats['atk']}   🛡️ **DEF:** {stats['def']}\n\n"
+        f"🎯 Type `!capture` to try catching it!\n"
+        f"🏃 Type `!run` to flee."
+    )
 __all__ = ["explore_command"]
