@@ -125,8 +125,8 @@ ZONES = {
     "legendary": ["Paladius", "Necromus", "Frostallion"]
 }
 
-@commands.command(name="explore")
-async def explore_command(ctx, zone: str):
+@commands.command(name="adventure")
+async def adventure_command(ctx, zone: str):
     char = characters.get(ctx.author.id)
     if not char:
         await ctx.send("❌ You need a character first! Use `!createchar` to begin your adventure.")
