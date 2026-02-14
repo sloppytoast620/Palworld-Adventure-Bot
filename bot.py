@@ -24,4 +24,7 @@ bot.add_command(explore_command)
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
 # Run the bot
+@bot.event
+async def setup_hook():
+    bot.remove_command("explore")
 bot.run(TOKEN)
