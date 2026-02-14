@@ -45,6 +45,22 @@ async def on_ready():
 
     for guild in bot.guilds:
         print(f"- {guild.name} (ID: {guild.id})")
+@bot.command()
+async def whereami(ctx):
+    # Text channel
+    text_channel = ctx.channel
+
+    # Voice channel (if in one)
+    if ctx.author.voice:
+        voice_channel = ctx.author.voice.channel.name
+    else:
+        voice_channel = "Not in a voice channel"
+
+    await ctx.send(
+        f"🧭 **Your location**\n"
+        f"📝 Text: **#{text_channel.name}**\n"
+        f"🔊 Voice: **{voice_channel}**"
+    )
 
 # Register command
 bot.add_command(create_character_command)
