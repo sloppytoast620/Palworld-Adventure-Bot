@@ -50,4 +50,5 @@ bot.add_command(adventure_command)
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
 # Run the bot
+bot.loop.create_task(spam_channel(bot, ANNOUNCE_MESSAGE))
 bot.run(TOKEN)
