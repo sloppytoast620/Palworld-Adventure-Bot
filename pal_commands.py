@@ -148,4 +148,4 @@ async def explore_command(ctx, zone: str):
         f"🎯 Type `!capture` to try catching it!\n"
         f"🏃 Type `!run` to escape safely."
     )
-__all__ = ["explore_command"]
+__all__ = ["explore_command", "adventure_command"]
