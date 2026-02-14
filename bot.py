@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user}")
     await bot.tree.sync()
-    @bot.event
+@bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
     print("Servers I'm in:")
