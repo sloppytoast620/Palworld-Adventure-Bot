@@ -16,6 +16,13 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user}")
     await bot.tree.sync()
+    @bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    print("Servers I'm in:")
+
+    for guild in bot.guilds:
+        print(f"- {guild.name} (ID: {guild.id})")
 
 # Register command
 bot.add_command(create_character_command)
