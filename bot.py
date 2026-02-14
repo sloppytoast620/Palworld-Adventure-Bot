@@ -18,13 +18,13 @@ async def on_ready():
     await bot.tree.sync()
 
 # Register commands
+@bot.event
+async def setup_hook():
+    bot.remove_command("explore")
 bot.add_command(create_character_command)
 bot.add_command(character_info_command)
 bot.add_command(explore_command)
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
 # Run the bot
-@bot.event
-async def setup_hook():
-    bot.remove_command("explore")
 bot.run(TOKEN)
