@@ -4,7 +4,7 @@ from discord.ext import commands
 
 # Import modules
 from characters import create_character_command, character_info_command
-from pal_commands import explore_command
+from pal_commands import adventure_command
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -20,7 +20,7 @@ async def on_ready():
 # Register command
 bot.add_command(create_character_command)
 bot.add_command(character_info_command)
-bot.add_command(explore_command)
+bot.add_command(adventure_command)
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
 # Run the bot
